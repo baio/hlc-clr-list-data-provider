@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { SWAPIService } from './swapi.service';
 
 // Provide table UI definition in js object
-const table: TableDescription = {
+const definition: Table.Definition = {
     cols: [
         {
             id: 'name',
@@ -22,11 +22,11 @@ const table: TableDescription = {
 
 @Component({
     selector: 'my-planets-table',
-    template: '<hlc-clr-table [table]="table" [dataProvider]="dataProvider"></hlc-clr-table>',
+    template: '<hlc-clr-table [definition]="definition" [dataProvider]="dataProvider"></hlc-clr-table>',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableComponent {
-    readonly table = table;
+    readonly definition = definition;
     readonly dataProvider: Table.Data.DataProvider;
 
     constructor(swapi: SWAPIService) {
